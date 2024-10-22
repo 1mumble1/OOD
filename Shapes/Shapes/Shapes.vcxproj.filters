@@ -47,9 +47,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCircleShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CTriangleShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -74,13 +71,16 @@
     <ClInclude Include="ColorsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CCircleMathDecorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CRectangleMathDecorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CTriangleMathDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCircleMathDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCircleShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

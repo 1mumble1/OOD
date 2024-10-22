@@ -15,10 +15,6 @@ public:
         m_rectangle.setFillColor(gen.GetRandomColor());
     }
 
-    //float GetArea() const override;
-
-    //float GetPerimeter() const override;
-
     std::string ToString() const override;
 
     void Draw(sf::RenderWindow& window) const override;

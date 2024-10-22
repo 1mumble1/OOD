@@ -2,18 +2,6 @@
 
 const std::string CRectangleShape::NAME = "RECTANGLE";
 
-//float CRectangleShape::GetArea() const
-//{
-//    sf::Vector2f size = m_rectangle.getSize();
-//    return size.x * size.y;
-//}
-//
-//float CRectangleShape::GetPerimeter() const
-//{
-//    sf::Vector2f size = m_rectangle.getSize();
-//    return 2 * (size.x + size.y);
-//}
-//
 std::string CRectangleShape::ToString() const
 {
     return NAME;

@@ -3,16 +3,6 @@
 
 const std::string CCircleShape::NAME = "CIRCLE";
 
-//float CCircleShape::GetArea() const
-//{
-//	return static_cast<float>(M_PI * m_circle.getRadius() * m_circle.getRadius());
-//}
-//
-//float CCircleShape::GetPerimeter() const
-//{
-//	return static_cast<float>(2 * M_PI * m_circle.getRadius());
-//}
-//
 std::string CCircleShape::ToString() const
 {
 	return NAME;

@@ -19,10 +19,6 @@ public:
 		m_triangle.setFillColor(gen.GetRandomColor());
 	}
 
-	//float GetArea() const override;
-
-	//float GetPerimeter() const override;
-
 	std::string ToString() const override;
 
 	void Draw(sf::RenderWindow& window) const override;
@@ -33,7 +29,5 @@ public:
 
 private:
 	sf::ConvexShape m_triangle;
-
-	//float GetSide(const sf::Vector2f& vertex1, const sf::Vector2f& vertex2) const;
 };
 
