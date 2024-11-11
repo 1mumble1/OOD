@@ -143,7 +143,7 @@
     <ClCompile Include="CTriangleShape.cpp" />
     <ClCompile Include="ShapeController.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
-    <ClCompile Include="ShapeDecorator.cpp" />
+    <ClCompile Include="ShapeMathDecorator.cpp" />
     <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,7 +157,7 @@
     <ClInclude Include="IShape.h" />
     <ClInclude Include="ShapeController.h" />
     <ClInclude Include="ShapeCreator.h" />
-    <ClInclude Include="ShapeDecorator.h" />
+    <ClInclude Include="ShapeMathDecorator.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

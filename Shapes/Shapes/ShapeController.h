@@ -15,7 +15,7 @@ private:
     const int HEIGHT_WINDOW = 900;
     const std::string TITLE_WINDOW = "Window";
 
-    std::vector<std::shared_ptr<IShape>> m_shapes = {};
+    std::vector<IShapePtr> m_shapes = {};
     sf::RenderWindow m_window = sf::RenderWindow(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), TITLE_WINDOW, sf::Style::Default);
 
     IShapePtr ConstructShape(const std::string& line);

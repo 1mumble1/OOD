@@ -1,10 +1,10 @@
 #pragma once
 #include "stdafx.h"
 
-class ShapeDecorator : public IShape
+class ShapeMathDecorator : public IShape
 {
 public:
-    ShapeDecorator(IShapePtr&& shape)
+    ShapeMathDecorator(IShapePtr&& shape)
         : m_shape(std::move(shape))
     {}
 

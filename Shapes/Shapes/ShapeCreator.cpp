@@ -28,7 +28,7 @@ IShapePtr ShapeCreator::CreateShape(const std::string& line)
     return nullptr;
 }
 
-std::shared_ptr<IShape> ShapeCreator::CreateCircle(const std::string& info)
+IShapePtr ShapeCreator::CreateCircle(const std::string& info)
 {
     float centerX, centerY, radius;
     std::regex pattern(R"(^C=(\d+),(\d+);\s*R=(\d+)$)");
@@ -50,7 +50,7 @@ std::shared_ptr<IShape> ShapeCreator::CreateCircle(const std::string& info)
     return std::make_shared<CCircleShape>(center, radius);
 }
 
-std::shared_ptr<IShape> ShapeCreator::CreateRectangle(const std::string& info)
+IShapePtr ShapeCreator::CreateRectangle(const std::string& info)
 {
     float leftTopX, leftTopY, rightBottomX, rightBottomY;
     std::regex pattern(R"(^P1=(\d+),(\d+);\s*P2=(\d+),(\d+)$)");
@@ -74,7 +74,7 @@ std::shared_ptr<IShape> ShapeCreator::CreateRectangle(const std::string& info)
     return std::make_shared<CRectangleShape>(leftTop, rightBottom);
 }
 
-std::shared_ptr<IShape> ShapeCreator::CreateTriangle(const std::string& info)
+IShapePtr ShapeCreator::CreateTriangle(const std::string& info)
 {
     float vertex1X, vertex1Y;
     float vertex2X, vertex2Y;

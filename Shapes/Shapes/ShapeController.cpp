@@ -1,7 +1,7 @@
 #include "ShapeController.h"
 #include "stdafx.h"
 #include "ShapeCreator.h"
-#include "ShapeDecorator.h"
+#include "ShapeMathDecorator.h"
 #include "ColorsGenerator.h"
 #include "CTriangleMathDecorator.h"
 #include "CRectangleMathDecorator.h"
@@ -12,7 +12,7 @@ void ShapeController::ReadShapes(const std::string& fileName)
     std::ifstream input(fileName);
     if (!input.is_open())
     {
-        std::cout << "Ошибка при окрытии файла";
+        std::cout << "Ошибка при открытии файла";
         return;
     }
 
@@ -71,7 +71,7 @@ void ShapeController::PrintShapesInfo(const std::string& fileName)
     std::ofstream output(fileName);
     if (!output.is_open())
     {
-        std::cout << "Ошибка при окрытии файла";
+        std::cout << "Ошибка при открытии файла";
         return;
     }
 
