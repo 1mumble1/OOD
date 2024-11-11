@@ -19,10 +19,15 @@ public:
 
 	void Draw(sf::RenderWindow& window) const override;
 
+	bool Contains(const sf::Vector2f& point) const override;
+	void Move(const sf::Vector2f& offset) override;
+	sf::Vector2f GetPosition() const override;
+
 	float GetRadius() const;
 	sf::Vector2f GetCenter() const;
 
 private:
 	sf::CircleShape m_circle;
+	bool m_selected = false;
 };
 

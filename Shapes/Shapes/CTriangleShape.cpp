@@ -12,6 +12,21 @@ void CTriangleShape::Draw(sf::RenderWindow& window) const
 	window.draw(m_triangle);
 }
 
+bool CTriangleShape::Contains(const sf::Vector2f& point) const
+{
+	return m_triangle.getGlobalBounds().contains(point);
+}
+
+void CTriangleShape::Move(const sf::Vector2f& offset)
+{
+	m_triangle.move(offset);
+}
+
+sf::Vector2f CTriangleShape::GetPosition() const
+{
+	return m_triangle.getPosition();
+}
+
 sf::Vector2f CTriangleShape::GetFirstVertex() const
 {
 	return m_triangle.getPoint(0);

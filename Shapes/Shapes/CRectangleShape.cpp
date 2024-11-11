@@ -12,6 +12,21 @@ void CRectangleShape::Draw(sf::RenderWindow& window) const
     window.draw(m_rectangle);
 }
 
+bool CRectangleShape::Contains(const sf::Vector2f& point) const
+{
+    return m_rectangle.getGlobalBounds().contains(point);
+}
+
+void CRectangleShape::Move(const sf::Vector2f& offset)
+{
+    m_rectangle.move(offset);
+}
+
+sf::Vector2f CRectangleShape::GetPosition() const
+{
+    return m_rectangle.getPosition();
+}
+
 float CRectangleShape::GetWidth() const
 {
     sf::Vector2f size = m_rectangle.getSize();

@@ -1,18 +1,19 @@
 #include "ShapeController.h"
 #include "stdafx.h"
 #include "ShapeCreator.h"
-#include "ShapeDecorator.h"
+#include "ShapeMathDecorator.h"
 #include "ColorsGenerator.h"
 #include "CTriangleMathDecorator.h"
 #include "CRectangleMathDecorator.h"
 #include "CCircleMathDecorator.h"
+#include "ShapeMovableDecorator.h"
 
 void ShapeController::ReadShapes(const std::string& fileName)
 {
     std::ifstream input(fileName);
     if (!input.is_open())
     {
-        std::cout << "Ошибка при окрытии файла";
+        std::cout << "Ошибка при открытии файла";
         return;
     }
 
@@ -38,23 +39,165 @@ IShapePtr ShapeController::ConstructShape(const std::string& line)
     return shape;
 }
 
+void ShapeController::ProcessEvents()
+{
+    sf::Event event;
+    while (m_window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+        {
+            m_window.close();
+        }
+        else if (event.type == sf::Event::MouseButtonPressed)
+        {
+            HandleMousePress(event.mouseButton);
+        }
+        else if (event.type == sf::Event::MouseButtonReleased)
+        {
+            HandleMouseRelease(event.mouseButton);
+        }
+        else if (event.type == sf::Event::MouseMoved)
+        {
+            HandleMouseMove(event.mouseMove);
+        }
+        else if (event.type == sf::Event::KeyPressed)
+        {
+            HandleKeyPress(event.key);
+        }
+    }
+}
 
+void ShapeController::HandleMousePress(const sf::Event::MouseButtonEvent& mouse)
+{
+    sf::Vector2f mousePos(mouse.x, mouse.y);
+    if (mouse.button == sf::Mouse::Left)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+        {
+            // Select multiple shapes
+            for (auto& shape : m_shapes)
+            {
+                auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+                if (shapePtr->Contains(mousePos))
+                {
+                    shapePtr->Select();
+                    m_selectedShapes.AddShape(shape);
+                }
+            }
+        }
+        else
+        {
+            // Select single shape
+            bool shapeSelected = false;
+            for (auto& shape : m_shapes)
+            {
+                auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+                if (shapePtr->Contains(mousePos))
+                {
+                    shapePtr->Select();
+                    m_dragOffset = mousePos - shapePtr->GetPosition();
+                    shapeSelected = true;
+                    break;
+                }
+            }
+            if (!shapeSelected)
+            {
+                // Deselect all shapes if no shape is clicked
+                for (auto& shape : m_shapes)
+                {
+                    auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+                    shapePtr->Deselect();
+                }
+            }
+
+        }
+    }
+}
+
+void ShapeController::HandleMouseRelease(const sf::Event::MouseButtonEvent& mouse)
+{
+    if (mouse.button == sf::Mouse::Left)
+    {
+        m_dragging = false;
+    }
+}
+
+void ShapeController::HandleMouseMove(const sf::Event::MouseMoveEvent& mouse)
+{
+    if (m_dragging)
+    {
+        sf::Vector2f mousePos(mouse.x, mouse.y);
+        sf::Vector2f offset = mousePos - m_dragOffset;
+        for (auto& shape : m_shapes)
+        {
+            auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+
+            if (shapePtr->IsSelected())
+            {
+                shapePtr->Move(offset);
+            }
+        }
+    }
+}
+
+void ShapeController::HandleKeyPress(const sf::Event::KeyEvent& key)
+{
+    if (key.code == sf::Keyboard::G && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+    {
+        // Group selected shapes
+        CompositeShape compositeShape;
+        for (auto it = m_shapes.begin(); it != m_shapes.end();)
+        {
+            auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(*it);
+
+            if (shapePtr->IsSelected())
+            {
+                compositeShape.AddShape(*it);
+                it = m_shapes.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+        m_shapes.push_back(std::make_shared<ShapeMovableDecorator>(std::make_shared<CompositeShape>(compositeShape)));
+    }
+    else if (key.code == sf::Keyboard::U && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+    {
+        // Ungroup selected shapes
+        for (auto it = m_shapes.begin(); it != m_shapes.end();)
+        {
+            auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(*it);
+
+            if (shapePtr->IsSelected() && dynamic_cast<CompositeShape*>(it->get()))
+            {
+                CompositeShape* compositeShape = dynamic_cast<CompositeShape*>(it->get());
+                for (auto& shape : compositeShape->GetShapes())
+                {
+                    m_shapes.push_back(std::make_shared<ShapeMovableDecorator>(shape));
+                }
+                it = m_shapes.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+}
 
 void ShapeController::DrawShapes()
 {
     m_window.setVerticalSyncEnabled(true);
- 
+
+    for (auto& shape : m_shapes)
+    {
+        shape = std::make_shared<ShapeMovableDecorator>(shape);
+    }
+
     while (m_window.isOpen())
     {
-        sf::Event event{};
-        while (m_window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                m_window.close();
-            }
-        }
-
+        ProcessEvents();
         m_window.clear(sf::Color::White);
 
         for (auto const& shape : m_shapes)
@@ -71,7 +214,7 @@ void ShapeController::PrintShapesInfo(const std::string& fileName)
     std::ofstream output(fileName);
     if (!output.is_open())
     {
-        std::cout << "Ошибка при окрытии файла";
+        std::cout << "Ошибка при открытии файла";
         return;
     }
 
@@ -88,6 +231,16 @@ void ShapeController::PrintShapesInfo(const std::string& fileName)
         else if (shape->ToString() == CCircleShape::NAME)
         {
             shape = std::make_shared<CCircleMathDecorator>(std::move(shape));
+        }
+        else if (shape->ToString() == CompositeShape::NAME)
+        {
+            std::vector<IShapePtr> shapes = std::dynamic_pointer_cast<CompositeShape>(shape)->GetShapes();
+            for (auto& shape : std::dynamic_pointer_cast<CompositeShape>(shape)->GetShapes())
+            {
+                shape = std::make_shared<ShapeMovableDecorator>(shape);
+            }
+
+            std::dynamic_pointer_cast<CompositeShape>(shape)->SetShapes(shapes);
         }
     }
 

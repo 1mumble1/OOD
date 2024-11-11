@@ -1,12 +1,12 @@
 #pragma once
 #include "stdafx.h"
-#include "ShapeDecorator.h"
+#include "ShapeMathDecorator.h"
 
-class CRectangleMathDecorator : public ShapeDecorator
+class CRectangleMathDecorator : public ShapeMathDecorator
 {
 public:
 	CRectangleMathDecorator(IShapePtr&& shape)
-		: ShapeDecorator(std::move(shape))
+		: ShapeMathDecorator(std::move(shape))
 	{
 		SetArea();
 		SetPerimeter();

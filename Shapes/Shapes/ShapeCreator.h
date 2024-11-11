@@ -7,13 +7,13 @@
 class ShapeCreator
 {
 public:
-    static std::shared_ptr<IShape> CreateShape(const std::string& line);
+    static IShapePtr CreateShape(const std::string& line);
 
 private:
-    static std::shared_ptr<IShape> CreateRectangle(const std::string& info);
+    static IShapePtr CreateRectangle(const std::string& info);
 
-    static std::shared_ptr<IShape> CreateTriangle(const std::string& info);
+    static IShapePtr CreateTriangle(const std::string& info);
 
-    static std::shared_ptr<IShape> CreateCircle(const std::string& info);
+    static IShapePtr CreateCircle(const std::string& info);
 };
 
