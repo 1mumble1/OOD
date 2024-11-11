@@ -16,6 +16,11 @@ public:
 
     void Draw(sf::RenderWindow& window) const override;
 
+    void Move(const sf::Vector2f& offset) override;
+    bool Contains(const sf::Vector2f& point) const override;
+    sf::Vector2f GetPosition() const override;
+    sf::Vector2f GetSize() const override;
+
 protected:
     virtual float CalculatePerimeter() const = 0;
     virtual float CalculateArea() const = 0;

@@ -137,6 +137,8 @@
   <ItemGroup>
     <ClCompile Include="CCircleMathDecorator.cpp" />
     <ClCompile Include="CCircleShape.cpp" />
+    <ClCompile Include="CompositeShape.cpp" />
+    <ClCompile Include="CompositeShapeMovableDecorator.cpp" />
     <ClCompile Include="CRectangleMathDecorator.cpp" />
     <ClCompile Include="CRectangleShape.cpp" />
     <ClCompile Include="CTriangleMathDecorator.cpp" />
@@ -144,12 +146,16 @@
     <ClCompile Include="ShapeController.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="ShapeMathDecorator.cpp" />
+    <ClCompile Include="ShapeMovableDecorator.cpp" />
     <ClCompile Include="Shapes.cpp" />
+    <ClCompile Include="SimpleShapeMovableDecorator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCircleMathDecorator.h" />
     <ClInclude Include="CCircleShape.h" />
     <ClInclude Include="ColorsGenerator.h" />
+    <ClInclude Include="CompositeShape.h" />
+    <ClInclude Include="CompositeShapeMovableDecorator.h" />
     <ClInclude Include="CRectangleMathDecorator.h" />
     <ClInclude Include="CRectangleShape.h" />
     <ClInclude Include="CTriangleMathDecorator.h" />
@@ -158,6 +164,8 @@
     <ClInclude Include="ShapeController.h" />
     <ClInclude Include="ShapeCreator.h" />
     <ClInclude Include="ShapeMathDecorator.h" />
+    <ClInclude Include="ShapeMovableDecorator.h" />
+    <ClInclude Include="SimpleShapeMovableDecorator.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

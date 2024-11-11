@@ -1,33 +1,28 @@
 #pragma once
 #include "stdafx.h"
-#include "ColorsGenerator.h"
 
-class CCircleShape : public IShape
+class CompositeShape : public IShape
 {
 public:
 	static const std::string NAME;
 
-	CCircleShape(const sf::Vector2f& center, float radius)
-	{
-		m_circle.setRadius(radius);
-		m_circle.setPosition(center);
-		ColorsGenerator gen;
-		m_circle.setFillColor(gen.GetRandomColor());
-	}
-
 	std::string ToString() const override;
 
 	void Draw(sf::RenderWindow& window) const override;
+
+	std::string ToStringShapes() const;
+	void AddShape(IShapePtr shape);
+	void RemoveShape(IShapePtr shape);
+
+	std::vector<IShapePtr> GetShapes();
+	void SetShapes(std::vector<IShapePtr> newShapes);
 
 	void Move(const sf::Vector2f& offset) override;
 	bool Contains(const sf::Vector2f& point) const override;
 	sf::Vector2f GetPosition() const override;
 	sf::Vector2f GetSize() const override;
 
-	float GetRadius() const;
-	sf::Vector2f GetCenter() const;
-
 private:
-	sf::CircleShape m_circle;
+	std::vector<IShapePtr> m_shapes;
 };
 

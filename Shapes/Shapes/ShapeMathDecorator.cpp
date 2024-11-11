@@ -22,6 +22,26 @@ void ShapeMathDecorator::Draw(sf::RenderWindow& window) const
     m_shape->Draw(window);
 }
 
+void ShapeMathDecorator::Move(const sf::Vector2f& offset)
+{
+    m_shape->Move(offset);
+}
+
+bool ShapeMathDecorator::Contains(const sf::Vector2f& point) const
+{
+    return m_shape->Contains(point);
+}
+
+sf::Vector2f ShapeMathDecorator::GetPosition() const
+{
+    return m_shape->GetPosition();
+}
+
+sf::Vector2f ShapeMathDecorator::GetSize() const
+{
+    return m_shape->GetSize();
+}
+
 void ShapeMathDecorator::SetPerimeter()
 {
     m_perimeter = CalculatePerimeter();

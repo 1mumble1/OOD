@@ -23,6 +23,11 @@ public:
 
 	void Draw(sf::RenderWindow& window) const override;
 
+	void Move(const sf::Vector2f& offset) override;
+	bool Contains(const sf::Vector2f& point) const override;
+	sf::Vector2f GetPosition() const override;
+	sf::Vector2f GetSize() const override;
+
 	sf::Vector2f GetFirstVertex() const;
 	sf::Vector2f GetSecondVertex() const;
 	sf::Vector2f GetThirdVertex() const;
