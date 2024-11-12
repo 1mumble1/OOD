@@ -71,11 +71,9 @@ void ShapeController::ProcessEvents()
 
 void ShapeController::HandleMousePress(const sf::Event::MouseButtonEvent& mouse)
 {
-    sf::Vector2f mousePos(mouse.x, mouse.y);
+    sf::Vector2f mousePos = m_window.mapPixelToCoords(sf::Vector2i(mouse.x, mouse.y));
     if (mouse.button == sf::Mouse::Left)
     {
-        sf::Vector2f mousePos = m_window.mapPixelToCoords(sf::Vector2i(mouse.x, mouse.y));
-
         for (auto& shape : m_shapes)
         {
             auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
@@ -114,8 +112,6 @@ void ShapeController::HandleMouseMove(const sf::Event::MouseMoveEvent& mouse)
 {
     if (m_dragging)
     {
-
-
         sf::Vector2f mousePos = m_window.mapPixelToCoords(sf::Vector2i(mouse.x, mouse.y));
         m_dragOffset = mousePos - m_dragStart;
         for (auto& shape : m_shapes)
