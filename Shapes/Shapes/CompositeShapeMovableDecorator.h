@@ -26,5 +26,6 @@ public:
     sf::Vector2f GetPosition() const override;
     sf::Vector2f GetSize() const override;
 
+    std::vector<IShapePtr> GetShapes();
 };
 

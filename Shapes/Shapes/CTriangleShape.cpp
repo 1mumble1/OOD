@@ -24,7 +24,7 @@ bool CTriangleShape::Contains(const sf::Vector2f& point) const
 
 sf::Vector2f CTriangleShape::GetPosition() const
 {
-	return m_triangle.getPosition();
+	return m_triangle.getGlobalBounds().getPosition();
 }
 
 sf::Vector2f CTriangleShape::GetSize() const

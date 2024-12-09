@@ -69,32 +69,51 @@ void ShapeController::ProcessEvents()
     }
 }
 
+void ShapeController::DeselectAllShapes()
+{
+    for (auto& s : m_shapes)
+    {
+        auto sPtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(s);
+        sPtr->Deselect();
+    }
+}
+
 void ShapeController::HandleMousePress(const sf::Event::MouseButtonEvent& mouse)
 {
     sf::Vector2f mousePos = m_window.mapPixelToCoords(sf::Vector2i(mouse.x, mouse.y));
+    bool isSelected = false;
     if (mouse.button == sf::Mouse::Left)
     {
-        for (auto& shape : m_shapes)
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
         {
-            auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
-            if (shapePtr->Contains(mousePos))
+            for (auto& shape : m_shapes)
             {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+                auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+                if (shapePtr->Contains(mousePos))
                 {
                     shapePtr->Select();
+                    m_dragging = true;
+                    m_dragStart = mousePos;
                 }
-                else
+            }
+        }
+        else
+        {
+            for (auto& shape : m_shapes)
+            {
+                auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+                if (shapePtr->Contains(mousePos))
                 {
-                    for (auto& s : m_shapes)
-                    {
-                        auto sPtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(s);
-                        sPtr->Deselect();
-                    }
+                    DeselectAllShapes();
                     shapePtr->Select();
+                    m_dragging = true;
+                    m_dragStart = mousePos;
+                    isSelected = true;
                 }
-                m_dragging = true;
-                m_dragStart = mousePos;
-                break;
+            }
+            if (!isSelected)
+            {
+                DeselectAllShapes();
             }
         }
     }
@@ -113,13 +132,13 @@ void ShapeController::HandleMouseMove(const sf::Event::MouseMoveEvent& mouse)
     if (m_dragging)
     {
         sf::Vector2f mousePos = m_window.mapPixelToCoords(sf::Vector2i(mouse.x, mouse.y));
-        m_dragOffset = mousePos - m_dragStart;
+        auto dragOffset = mousePos - m_dragStart;
         for (auto& shape : m_shapes)
         {
             auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
             if (shapePtr->IsSelected())
             {
-                shapePtr->Move(m_dragOffset);
+                shapePtr->Move(dragOffset);
             }
         }
         m_dragStart = mousePos;
@@ -150,25 +169,24 @@ void ShapeController::HandleKeyPress(const sf::Event::KeyEvent& key)
     }
     else if (key.code == sf::Keyboard::U && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
     {
-        // Ungroup selected shapes
-        for (auto it = m_shapes.begin(); it != m_shapes.end();)
+        std::vector<IShapePtr> newShapes;
+        for (auto& shape : m_shapes)
         {
-            auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(*it);
-
-            if (shapePtr->IsSelected() && dynamic_cast<CompositeShape*>(it->get()))
+            auto shapePtr = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+            if (shapePtr->IsSelected() && shapePtr->ToString() == CompositeShape::NAME)
             {
-                CompositeShape* compositeShape = dynamic_cast<CompositeShape*>(it->get());
-                for (auto& shape : compositeShape->GetShapes())
+                auto compositeShape = std::dynamic_pointer_cast<CompositeShapeMovableDecorator>(shape);
+                for (auto& s : compositeShape->GetShapes())
                 {
-                    m_shapes.push_back(std::make_shared<SimpleShapeMovableDecorator>(std::move(shape)));
+                    newShapes.push_back(s);
                 }
-                it = m_shapes.erase(it);
             }
             else
             {
-                ++it;
+                newShapes.push_back(shape);
             }
         }
+        m_shapes = newShapes;
     }
 }
 

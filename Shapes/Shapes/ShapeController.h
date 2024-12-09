@@ -18,8 +18,7 @@ private:
 
     std::vector<IShapePtr> m_shapes = {};
     sf::RenderWindow m_window = sf::RenderWindow(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), TITLE_WINDOW, sf::Style::Default);
-    CompositeShape m_selectedShapes;
-    sf::Vector2f m_dragOffset, m_dragStart;
+    sf::Vector2f m_dragStart;
     bool m_dragging = false;
 
     IShapePtr ConstructShape(const std::string& line);
@@ -29,6 +28,6 @@ private:
     void HandleMouseRelease(const sf::Event::MouseButtonEvent& mouse);
     void HandleMouseMove(const sf::Event::MouseMoveEvent& mouse);
     void HandleKeyPress(const sf::Event::KeyEvent& key);
-
+    void DeselectAllShapes();
 };
 
