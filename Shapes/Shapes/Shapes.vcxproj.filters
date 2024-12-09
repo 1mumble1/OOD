@@ -33,9 +33,6 @@
     <ClCompile Include="ShapeCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeDecorator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CCircleMathDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,6 +40,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CTriangleMathDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeShapeMovableDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMathDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMovableDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleShapeMovableDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,9 +80,6 @@
     <ClInclude Include="ShapeCreator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeDecorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ColorsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -81,6 +93,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CCircleShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeShapeMovableDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMathDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMovableDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleShapeMovableDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

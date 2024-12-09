@@ -10,9 +10,9 @@
 #include "SimpleShapeMovableDecorator.h"
 #include "CompositeShapeMovableDecorator.h"
 
-void ShapeController::ReadShapes(const std::string& fileName)
+void ShapeController::ReadShapes()
 {
-    std::ifstream input(fileName);
+    std::ifstream input(m_inputFileName);
     if (!input.is_open())
     {
         std::cout << "Ошибка при открытии файла";
@@ -33,6 +33,8 @@ void ShapeController::ReadShapes(const std::string& fileName)
             m_shapes.emplace_back(shape);
         }
     }
+
+    input.close();
 }
 
 IShapePtr ShapeController::ConstructShape(const std::string& line)
@@ -215,9 +217,9 @@ void ShapeController::DrawShapes()
     }
 }
 
-void ShapeController::PrintShapesInfo(const std::string& fileName)
+void ShapeController::PrintShapesInfo()
 {
-    std::ofstream output(fileName);
+    std::ofstream output(m_outputFileName);
     if (!output.is_open())
     {
         std::cout << "Ошибка при открытии файла";

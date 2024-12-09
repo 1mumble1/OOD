@@ -1,11 +1,13 @@
 #include "stdafx.h"
-#include "ShapeController.h"
+#include "Application.h"
+
+const std::string INPUT_FILE_NAME = "input.txt";
+const std::string OUTPUT_FILE_NAME = "output.txt";
 
 int main()
 {
-    ShapeController sController;
-    sController.ReadShapes("input.txt");
-    sController.PrintShapesInfo("output.txt");
-    sController.DrawShapes();
+    auto app = Application::GetInstance(INPUT_FILE_NAME, OUTPUT_FILE_NAME);
+    app->Run();
+
     return 0;
 }

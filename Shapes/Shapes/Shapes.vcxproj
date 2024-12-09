@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="CCircleMathDecorator.cpp" />
     <ClCompile Include="CCircleShape.cpp" />
     <ClCompile Include="CompositeShape.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="SimpleShapeMovableDecorator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="CCircleMathDecorator.h" />
     <ClInclude Include="CCircleShape.h" />
     <ClInclude Include="ColorsGenerator.h" />

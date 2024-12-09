@@ -5,16 +5,23 @@
 class ShapeController
 {
 public:
-    void ReadShapes(const std::string& fileName);
+    ShapeController(const std::string& inputFileName, const std::string& outputFileName)
+        : m_inputFileName(inputFileName)
+        , m_outputFileName(outputFileName)
+    {}
+
+    void ReadShapes();
 
     void DrawShapes();
 
-    void PrintShapesInfo(const std::string& fileName);
+    void PrintShapesInfo();
 
 private:
     const int WIDTH_WINDOW = 1500;
     const int HEIGHT_WINDOW = 900;
     const std::string TITLE_WINDOW = "Window";
+
+    std::string m_inputFileName, m_outputFileName;
 
     std::vector<IShapePtr> m_shapes = {};
     sf::RenderWindow m_window = sf::RenderWindow(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), TITLE_WINDOW, sf::Style::Default);
