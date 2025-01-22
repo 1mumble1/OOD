@@ -226,24 +226,39 @@ void ShapeController::PrintShapesInfo(const std::string& fileName)
 
     for (auto& shape : m_shapes)
     {
-        if (shape->ToString() == CTriangleShape::NAME)
+        IShapePtr currentShape = shape;
+
+        // Извлекаем оригинальную фигуру из декораторов перемещения
+        while (auto movableDecorator = std::dynamic_pointer_cast<ShapeMovableDecorator>(currentShape))
         {
-            shape = std::make_shared<CTriangleMathDecorator>(std::move(shape));
+            currentShape = movableDecorator->GetOriginalShape();
         }
-        else if (shape->ToString() == CRectangleShape::NAME)
+
+        if (currentShape->ToString() == CTriangleShape::NAME)
         {
-            shape = std::make_shared<CRectangleMathDecorator>(std::move(shape));
+            auto mathShape = std::make_shared<CTriangleMathDecorator>(std::move(currentShape));
+            output << mathShape->ToString() << std::endl;
         }
-        else if (shape->ToString() == CCircleShape::NAME)
+        else if (currentShape->ToString() == CRectangleShape::NAME)
         {
-            shape = std::make_shared<CCircleMathDecorator>(std::move(shape));
+            auto mathShape = std::make_shared<CRectangleMathDecorator>(std::move(currentShape));
+            output << mathShape->ToString() << std::endl;
+        }
+        else if (currentShape->ToString() == CCircleShape::NAME)
+        {
+            auto mathShape = std::make_shared<CCircleMathDecorator>(std::move(currentShape));
+            output << mathShape->ToString() << std::endl;
+        }
+        else
+        {
+            output << currentShape->ToString() << std::endl;
         }
     }
 
-    for (auto const& shape : m_shapes)
-    {
-        output << shape->ToString() << std::endl;
-    }
+    //for (auto const& shape : m_shapes)
+    //{
+    //    output << shape->ToString() << std::endl;
+    //}
 
     output.close();
 }

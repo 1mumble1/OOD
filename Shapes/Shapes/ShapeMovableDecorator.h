@@ -8,6 +8,8 @@ public:
         : m_shape(std::move(shape))
     {}
 
+    IShapePtr GetOriginalShape() const { return m_shape; }
+
     std::string ToString() const override;
 
     virtual void Draw(sf::RenderWindow& window) const override = 0;

@@ -5,7 +5,8 @@ int main()
 {
     ShapeController sController;
     sController.ReadShapes("input.txt");
-    sController.PrintShapesInfo("output.txt");
+    
     sController.DrawShapes();
+    sController.PrintShapesInfo("output.txt");
     return 0;
 }
