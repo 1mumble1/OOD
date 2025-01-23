@@ -10,6 +10,14 @@
 #include "SimpleShapeMovableDecorator.h"
 #include "CompositeShapeMovableDecorator.h"
 
+ShapeController& ShapeController::GetInstance()
+{
+    static ShapeController instance;
+    return instance;
+}
+
+ShapeController::ShapeController() = default;
+
 void ShapeController::ReadShapes(const std::string& fileName)
 {
     std::ifstream input(fileName);

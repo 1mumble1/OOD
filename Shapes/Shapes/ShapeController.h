@@ -5,6 +5,11 @@
 class ShapeController
 {
 public:
+    ShapeController(const ShapeController&) = delete;
+    void operator=(const ShapeController&) = delete;
+    static ShapeController& GetInstance();
+
+
     void ReadShapes(const std::string& fileName);
 
     void DrawShapes();
@@ -12,6 +17,8 @@ public:
     void PrintShapesInfo(const std::string& fileName);
 
 private:
+    ShapeController();
+
     const int WIDTH_WINDOW = 1500;
     const int HEIGHT_WINDOW = 900;
     const std::string TITLE_WINDOW = "Window";
