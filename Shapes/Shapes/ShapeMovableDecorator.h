@@ -13,6 +13,14 @@ public:
     std::string ToString() const override;
 
     virtual void Draw(sf::RenderWindow& window) const override = 0;
+    virtual void SetFillColor(const sf::Color newColor) override = 0;
+    virtual void SetOutlineColor(const sf::Color newColor) override = 0;
+    virtual void AddOutlineThickness() override = 0;
+    virtual void ReduceOutlineThickness() override = 0;
+    virtual sf::Color GetFillColor() const override = 0;
+    virtual sf::Color GetOutlineColor() const override = 0;
+    virtual float GetThickness() const override = 0;
+
 
     virtual void Select() = 0;
     virtual void Deselect() = 0;

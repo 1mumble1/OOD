@@ -135,42 +135,82 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddOutlineThicknessCommand.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="CCircleMathDecorator.cpp" />
     <ClCompile Include="CCircleShape.cpp" />
     <ClCompile Include="CompositeShape.cpp" />
     <ClCompile Include="CompositeShapeMovableDecorator.cpp" />
+    <ClCompile Include="CreateCircleCommand.cpp" />
+    <ClCompile Include="CreateRectangleCommand.cpp" />
+    <ClCompile Include="CreateTriangleCommand.cpp" />
     <ClCompile Include="CRectangleMathDecorator.cpp" />
     <ClCompile Include="CRectangleShape.cpp" />
     <ClCompile Include="CTriangleMathDecorator.cpp" />
     <ClCompile Include="CTriangleShape.cpp" />
+    <ClCompile Include="DragAndDropCommand.cpp" />
+    <ClCompile Include="DragAndDropState.cpp" />
+    <ClCompile Include="FillOutlineCommand.cpp" />
+    <ClCompile Include="FillOutlineState.cpp" />
+    <ClCompile Include="FillShapeCommand.cpp" />
+    <ClCompile Include="FillShapeState.cpp" />
+    <ClCompile Include="ReduceOutlineThicknessCommand.cpp" />
+    <ClCompile Include="SetBlueColorCommand.cpp" />
+    <ClCompile Include="SetGreenColorCommand.cpp" />
+    <ClCompile Include="SetRedColorCommand.cpp" />
     <ClCompile Include="ShapeController.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
+    <ClCompile Include="ShapeHandler.cpp" />
     <ClCompile Include="ShapeMathDecorator.cpp" />
     <ClCompile Include="ShapeMovableDecorator.cpp" />
     <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="SimpleShapeMovableDecorator.cpp" />
+    <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddOutlineThicknessCommand.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="CCircleMathDecorator.h" />
     <ClInclude Include="CCircleShape.h" />
     <ClInclude Include="ColorsGenerator.h" />
     <ClInclude Include="CompositeShape.h" />
     <ClInclude Include="CompositeShapeMovableDecorator.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="CreateCircleCommand.h" />
+    <ClInclude Include="CreateRectangleCommand.h" />
+    <ClInclude Include="CreateTriangleCommand.h" />
     <ClInclude Include="CRectangleMathDecorator.h" />
     <ClInclude Include="CRectangleShape.h" />
     <ClInclude Include="CTriangleMathDecorator.h" />
     <ClInclude Include="CTriangleShape.h" />
+    <ClInclude Include="DragAndDropCommand.h" />
+    <ClInclude Include="DragAndDropState.h" />
+    <ClInclude Include="FillOutlineCommand.h" />
+    <ClInclude Include="FillOutlineState.h" />
+    <ClInclude Include="FillShapeCommand.h" />
+    <ClInclude Include="FillShapeState.h" />
+    <ClInclude Include="ICommand.h" />
     <ClInclude Include="IShape.h" />
+    <ClInclude Include="IState.h" />
+    <ClInclude Include="ReduceOutlineThicknessCommand.h" />
+    <ClInclude Include="SetBlueColorCommand.h" />
+    <ClInclude Include="SetGreenColorCommand.h" />
+    <ClInclude Include="SetRedColorCommand.h" />
     <ClInclude Include="ShapeController.h" />
     <ClInclude Include="ShapeCreator.h" />
+    <ClInclude Include="ShapeHandler.h" />
     <ClInclude Include="ShapeMathDecorator.h" />
     <ClInclude Include="ShapeMovableDecorator.h" />
     <ClInclude Include="SimpleShapeMovableDecorator.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Toolbar.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
     <Text Include="output.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="arialmt.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

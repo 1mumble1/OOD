@@ -10,6 +10,13 @@ public:
 	{}
 
     void Draw(sf::RenderWindow& window) const override;
+    void SetFillColor(const sf::Color newColor) override;
+    void SetOutlineColor(const sf::Color newColor) override;
+    void AddOutlineThickness() override;
+    void ReduceOutlineThickness() override;
+    sf::Color GetFillColor() const override;
+    sf::Color GetOutlineColor() const override;
+    float GetThickness() const override;
 
     void Select() override;
     void Deselect() override;

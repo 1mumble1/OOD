@@ -9,6 +9,13 @@ public:
 	std::string ToString() const override;
 
 	void Draw(sf::RenderWindow& window) const override;
+	void SetFillColor(const sf::Color newColor) override;
+	void SetOutlineColor(const sf::Color newColor) override;
+	void AddOutlineThickness() override;
+	void ReduceOutlineThickness() override;
+	sf::Color GetFillColor() const override;
+	sf::Color GetOutlineColor() const override;
+	float GetThickness() const override;
 
 	std::string ToStringShapes() const;
 	void AddShape(IShapePtr shape);

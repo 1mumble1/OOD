@@ -13,14 +13,11 @@ public:
 	}
 
 private:
-	const int MIN_RGB_COLOR_VALUE = 0;
-	const int MAX_RGB_COLOR_VALUE = 255;
-
 	void GenerateRandomColor()
 	{
-		std::random_device rd;   // non-deterministic generator
-		std::mt19937 gen(rd());  // to seed mersenne twister.
-		std::uniform_int_distribution<int> dist(MIN_RGB_COLOR_VALUE, MAX_RGB_COLOR_VALUE); // distribute results between 1 and 6 inclusive.
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<int> dist(MIN_RGB_COLOR_VALUE, MAX_RGB_COLOR_VALUE);
 
 		m_r = dist(gen);
 		m_g = dist(gen);

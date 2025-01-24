@@ -33,9 +33,6 @@
     <ClCompile Include="ShapeCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeDecorator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CCircleMathDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,6 +40,72 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CTriangleMathDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeShapeMovableDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMathDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMovableDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleShapeMovableDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateCircleCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateRectangleCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateTriangleCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DragAndDropState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FillShapeState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FillOutlineState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DragAndDropCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FillShapeCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FillOutlineCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetRedColorCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetGreenColorCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetBlueColorCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddOutlineThicknessCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReduceOutlineThicknessCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Toolbar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,9 +128,6 @@
     <ClInclude Include="ShapeCreator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeDecorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ColorsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -83,9 +143,87 @@
     <ClInclude Include="CCircleShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CompositeShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeShapeMovableDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMathDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMovableDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleShapeMovableDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateCircleCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateRectangleCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateTriangleCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DragAndDropState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FillShapeState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FillOutlineState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DragAndDropCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FillShapeCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FillOutlineCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetRedColorCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetGreenColorCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetBlueColorCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddOutlineThicknessCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReduceOutlineThicknessCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Toolbar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
     <Text Include="output.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="arialmt.ttf" />
   </ItemGroup>
 </Project>

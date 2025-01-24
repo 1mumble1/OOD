@@ -10,6 +10,41 @@ void ShapeMovableDecorator::Draw(sf::RenderWindow& window) const
     m_shape->Draw(window);
 }
 
+void ShapeMovableDecorator::SetFillColor(const sf::Color newColor)
+{
+    m_shape->SetFillColor(newColor);
+}
+
+void ShapeMovableDecorator::SetOutlineColor(const sf::Color newColor)
+{
+    m_shape->SetOutlineColor(newColor);
+}
+
+void ShapeMovableDecorator::AddOutlineThickness()
+{
+    m_shape->AddOutlineThickness();
+}
+
+void ShapeMovableDecorator::ReduceOutlineThickness()
+{
+    m_shape->ReduceOutlineThickness();
+}
+
+sf::Color ShapeMovableDecorator::GetFillColor() const
+{
+    return m_shape->GetFillColor();
+}
+
+sf::Color ShapeMovableDecorator::GetOutlineColor() const
+{
+    return m_shape->GetOutlineColor();
+}
+
+float ShapeMovableDecorator::GetThickness() const
+{
+    return m_shape->GetThickness();
+}
+
 void ShapeMovableDecorator::Move(const sf::Vector2f& offset)
 {
     m_shape->Move(offset);

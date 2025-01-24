@@ -2,7 +2,7 @@
 
 IShapePtr ShapeCreator::CreateShape(const std::string& line)
 {
-    std::regex pattern(R"(^(\w+):\s*(.*)$)");
+    std::regex pattern(SHAPE_PATTERN);
     std::smatch matches;
 
     std::string nameOfShape, info;
@@ -31,7 +31,7 @@ IShapePtr ShapeCreator::CreateShape(const std::string& line)
 IShapePtr ShapeCreator::CreateCircle(const std::string& info)
 {
     float centerX, centerY, radius;
-    std::regex pattern(R"(^C=(\d+),(\d+);\s*R=(\d+)$)");
+    std::regex pattern(CIRCLE_PATTERN);
     std::smatch matches;
 
     if (std::regex_search(info, matches, pattern))
@@ -42,7 +42,7 @@ IShapePtr ShapeCreator::CreateCircle(const std::string& info)
     }
     else
     {
-        std::cout << "Invalid circle coordinates or sizes" << std::endl;
+        std::cout << ERROR_CREATE_CIRCLE << std::endl;
         return nullptr;
     }
 
@@ -53,7 +53,7 @@ IShapePtr ShapeCreator::CreateCircle(const std::string& info)
 IShapePtr ShapeCreator::CreateRectangle(const std::string& info)
 {
     float leftTopX, leftTopY, rightBottomX, rightBottomY;
-    std::regex pattern(R"(^P1=(\d+),(\d+);\s*P2=(\d+),(\d+)$)");
+    std::regex pattern(RECTANGLE_PATTERN);
     std::smatch matches;
 
     if (std::regex_search(info, matches, pattern))
@@ -65,7 +65,7 @@ IShapePtr ShapeCreator::CreateRectangle(const std::string& info)
     }
     else
     {
-        std::cout << "Invalid rectangle coordinates" << std::endl;
+        std::cout << ERROR_CREATE_RECTANGLE << std::endl;
         return nullptr;
     }
 
@@ -80,7 +80,7 @@ IShapePtr ShapeCreator::CreateTriangle(const std::string& info)
     float vertex2X, vertex2Y;
     float vertex3X, vertex3Y;
 
-    std::regex pattern(R"(^P1=(\d+),(\d+);\s*P2=(\d+),(\d+);\s*P3=(\d+),(\d+)$)");
+    std::regex pattern(TRIANGLE_PATTERN);
     std::smatch matches;
 
     if (std::regex_search(info, matches, pattern))
@@ -94,7 +94,7 @@ IShapePtr ShapeCreator::CreateTriangle(const std::string& info)
     }
     else
     {
-        std::cout << "Invalid triangle coordinates" << std::endl;
+        std::cout << ERROR_CREATE_TRIANGLE << std::endl;
         return nullptr;
     }
 

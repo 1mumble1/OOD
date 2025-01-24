@@ -11,10 +11,10 @@ public:
 		const sf::Vector2f& vertex2,
 		const sf::Vector2f& vertex3)
 	{
-		m_triangle.setPointCount(3);
-		m_triangle.setPoint(0, vertex1);
-		m_triangle.setPoint(1, vertex2);
-		m_triangle.setPoint(2, vertex3);
+		m_triangle.setPointCount(COUNT_OF_VERTEX_FOR_TRIANGLE);
+		m_triangle.setPoint(ID_OF_FIRST_VERTEX_FOR_TRIANGLE, vertex1);
+		m_triangle.setPoint(ID_OF_SECOND_VERTEX_FOR_TRIANGLE, vertex2);
+		m_triangle.setPoint(ID_OF_THIRD_VERTEX_FOR_TRIANGLE, vertex3);
 		ColorsGenerator gen;
 		m_triangle.setFillColor(gen.GetRandomColor());
 	}
@@ -22,6 +22,14 @@ public:
 	std::string ToString() const override;
 
 	void Draw(sf::RenderWindow& window) const override;
+	void SetFillColor(const sf::Color newColor) override;
+	void SetOutlineColor(const sf::Color newColor) override;
+	void AddOutlineThickness() override;
+	void ReduceOutlineThickness() override;
+	sf::Color GetFillColor() const override;
+	sf::Color GetOutlineColor() const override;
+	float GetThickness() const override;
+
 
 	void Move(const sf::Vector2f& offset) override;
 	bool Contains(const sf::Vector2f& point) const override;
@@ -35,4 +43,3 @@ public:
 private:
 	sf::ConvexShape m_triangle;
 };
-

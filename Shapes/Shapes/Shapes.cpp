@@ -4,8 +4,9 @@
 int main()
 {
     ShapeController& sController = ShapeController::GetInstance();
-    sController.ReadShapes("input.txt");
+    sController.ReadShapes(INPUT_FILE_NAME);
     sController.DrawShapes();
-    sController.PrintShapesInfo("output.txt");
+    sController.PrintShapesInfo(OUTPUT_FILE_NAME);
+
     return 0;
 }

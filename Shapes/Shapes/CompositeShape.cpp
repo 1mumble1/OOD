@@ -1,10 +1,17 @@
 #include "CompositeShape.h"
 
-const std::string CompositeShape::NAME = "COMPOSITE";
+const std::string CompositeShape::NAME = COMPOSITE_SHAPE_NAME;
 
 std::string CompositeShape::ToString() const
 {
-    return NAME;
+    std::ostringstream infoStream(NAME);
+    infoStream << std::endl;
+    for (auto const& shape : m_shapes)
+    {
+        infoStream << TABULATION << shape->ToString() << std::endl;
+    }
+
+    return infoStream.str();
 }
 
 void CompositeShape::Draw(sf::RenderWindow& window) const
@@ -13,6 +20,65 @@ void CompositeShape::Draw(sf::RenderWindow& window) const
     {
         shape->Draw(window);
     }
+}
+
+void CompositeShape::SetFillColor(const sf::Color newColor)
+{
+    for (auto const& shape : m_shapes)
+    {
+        shape->SetFillColor(newColor);
+    }
+}
+
+void CompositeShape::SetOutlineColor(const sf::Color newColor)
+{
+    for (auto const& shape : m_shapes)
+    {
+        shape->SetOutlineColor(newColor);
+    }
+}
+
+void CompositeShape::AddOutlineThickness()
+{
+    for (auto& shape : m_shapes)
+    {
+        shape->AddOutlineThickness();
+    }
+}
+
+void CompositeShape::ReduceOutlineThickness()
+{
+    for (auto& shape : m_shapes)
+    {
+        shape->ReduceOutlineThickness();
+    }
+}
+
+sf::Color CompositeShape::GetFillColor() const
+{
+    if (m_shapes.empty())
+    {
+        return sf::Color::Black;
+    }
+    return m_shapes[0]->GetFillColor();
+}
+
+sf::Color CompositeShape::GetOutlineColor() const
+{
+    if (m_shapes.empty())
+    {
+        return sf::Color::Black;
+    }
+    return m_shapes[0]->GetOutlineColor();
+}
+
+float CompositeShape::GetThickness() const
+{
+    if (m_shapes.empty())
+    {
+        return 0.0f;
+    }
+    return m_shapes[0]->GetThickness();
 }
 
 std::string CompositeShape::ToStringShapes() const

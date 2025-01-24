@@ -1,6 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "CompositeShape.h"
+#include "ShapeHandler.h"
+#include "Toolbar.h"
 
 class ShapeController
 {
@@ -9,7 +11,6 @@ public:
     void operator=(const ShapeController&) = delete;
     static ShapeController& GetInstance();
 
-
     void ReadShapes(const std::string& fileName);
 
     void DrawShapes();
@@ -17,16 +18,18 @@ public:
     void PrintShapesInfo(const std::string& fileName);
 
 private:
-    ShapeController();
+    ShapeController()
+    {
+        m_handler = new ShapeHandler(m_window);
+        m_toolBar = new Toolbar(m_window, m_handler);
+    };
 
-    const int WIDTH_WINDOW = 1500;
-    const int HEIGHT_WINDOW = 900;
-    const std::string TITLE_WINDOW = "Window";
+    ShapeHandler* m_handler;
+    Toolbar* m_toolBar;
 
-    std::vector<IShapePtr> m_shapes = {};
     sf::RenderWindow m_window = sf::RenderWindow(sf::VideoMode(WIDTH_WINDOW, HEIGHT_WINDOW), TITLE_WINDOW, sf::Style::Default);
     sf::Vector2f m_dragStart;
-    bool m_dragging = false;
+    bool m_dragging = INITIAL_DRAGGING_VALUE;
 
     IShapePtr ConstructShape(const std::string& line);
 
