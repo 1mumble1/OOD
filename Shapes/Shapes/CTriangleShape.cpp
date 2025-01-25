@@ -88,3 +88,8 @@ sf::Vector2f CTriangleShape::GetThirdVertex() const
 {
 	return m_triangle.getPoint(ID_OF_THIRD_VERTEX_FOR_TRIANGLE);
 }
+
+IShapePtr CTriangleShape::Clone() const
+{
+	return std::make_shared<CTriangleShape>(*this);
+}

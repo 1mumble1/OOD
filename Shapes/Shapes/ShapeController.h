@@ -26,6 +26,8 @@ private:
         m_history = new History();
     };
 
+    void SaveChanges();
+
     ShapeHandler* m_handler;
     Toolbar* m_toolBar;
     History* m_history;

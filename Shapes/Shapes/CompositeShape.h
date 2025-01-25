@@ -29,6 +29,8 @@ public:
 	sf::Vector2f GetPosition() const override;
 	sf::Vector2f GetSize() const override;
 
+	std::shared_ptr<IShape> Clone() const override;
+
 private:
 	std::vector<IShapePtr> m_shapes;
 };

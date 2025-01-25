@@ -40,6 +40,8 @@ public:
 	sf::Vector2f GetSecondVertex() const;
 	sf::Vector2f GetThirdVertex() const;
 
+	std::shared_ptr<IShape> Clone() const override;
+
 private:
 	sf::ConvexShape m_triangle;
 };

@@ -29,6 +29,8 @@ public:
     sf::Vector2f GetPosition() const override;
     sf::Vector2f GetSize() const override;
 
+    std::shared_ptr<IShape> Clone() const override;
+
 protected:
     virtual float CalculatePerimeter() const = 0;
     virtual float CalculateArea() const = 0;

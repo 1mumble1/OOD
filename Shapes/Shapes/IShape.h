@@ -19,6 +19,8 @@ public:
     virtual sf::Color GetFillColor() const = 0;
     virtual sf::Color GetOutlineColor() const = 0;
     virtual float GetThickness() const = 0;
+
+    virtual std::shared_ptr<IShape> Clone() const = 0;
 };
 
 typedef std::shared_ptr<IShape> IShapePtr;

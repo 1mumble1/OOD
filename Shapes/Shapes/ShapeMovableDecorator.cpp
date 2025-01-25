@@ -64,3 +64,9 @@ sf::Vector2f ShapeMovableDecorator::GetSize() const
 {
     return m_shape->GetSize();
 }
+
+IShapePtr ShapeMovableDecorator::Clone() const
+{
+    auto clonedShape = m_shape->Clone();
+    return std::make_shared<ShapeMovableDecorator>(clonedShape);
+}

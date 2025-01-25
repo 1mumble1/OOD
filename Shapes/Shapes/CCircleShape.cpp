@@ -74,6 +74,11 @@ sf::Vector2f CCircleShape::GetSize() const
 	return m_circle.getGlobalBounds().getSize();
 }
 
+IShapePtr CCircleShape::Clone() const
+{
+	return std::make_shared<CCircleShape>(*this);
+}
+
 float CCircleShape::GetRadius() const
 {
 	return m_circle.getRadius();

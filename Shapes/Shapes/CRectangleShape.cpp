@@ -86,3 +86,8 @@ float CRectangleShape::GetHeight() const
     return size.y;
 }
 
+IShapePtr CRectangleShape::Clone() const
+{
+    return std::make_shared<CRectangleShape>(*this);
+}
+

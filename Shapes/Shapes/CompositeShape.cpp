@@ -161,4 +161,9 @@ sf::Vector2f CompositeShape::GetSize() const
     return sf::Vector2f();
 }
 
+IShapePtr CompositeShape::Clone() const
+{
+    return std::make_shared<CompositeShape>(*this);
+}
+
 

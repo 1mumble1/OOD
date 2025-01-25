@@ -31,6 +31,8 @@ public:
 	sf::Vector2f GetPosition() const override;
 	sf::Vector2f GetSize() const override;
 
+	std::shared_ptr<IShape> Clone() const override;
+
 	float GetRadius() const;
 	sf::Vector2f GetCenter() const;
 

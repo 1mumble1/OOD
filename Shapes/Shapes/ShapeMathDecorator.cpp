@@ -77,6 +77,12 @@ sf::Vector2f ShapeMathDecorator::GetSize() const
     return m_shape->GetSize();
 }
 
+IShapePtr ShapeMathDecorator::Clone() const
+{
+    auto clonedShape = m_shape->Clone();
+    return std::make_shared<ShapeMathDecorator>(clonedShape);
+}
+
 void ShapeMathDecorator::SetPerimeter()
 {
     m_perimeter = CalculatePerimeter();

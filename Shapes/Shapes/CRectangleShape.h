@@ -34,6 +34,8 @@ public:
     float GetWidth() const;
     float GetHeight() const;
 
+    std::shared_ptr<IShape> Clone() const override;
+
 private:
 	sf::RectangleShape m_rectangle;
 };

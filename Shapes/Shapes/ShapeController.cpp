@@ -97,8 +97,7 @@ void ShapeController::HandleMousePress(const sf::Event::MouseButtonEvent& mouse)
     {
         m_toolBar->SetCursorPosition(mousePos);
         m_toolBar->PressToolButton();
-        auto currentMemento = std::make_shared<ShapeMemento>(m_handler->GetShapes());
-        m_history->UpdateHistory(currentMemento);
+        SaveChanges();
 
         if (typeid(*m_toolBar->GetState()) == typeid(DragAndDropState))
         {
@@ -189,7 +188,7 @@ void ShapeController::HandleKeyPress(const sf::Event::KeyEvent& key)
         }
         shapes.push_back(std::make_shared<CompositeShapeMovableDecorator>(std::make_shared<CompositeShape>(compositeShape)));
         m_handler->SetShapes(shapes);
-        m_history->UpdateHistory(std::make_shared<ShapeMemento>(shapes));
+        SaveChanges();
     }
     else if (key.code == sf::Keyboard::U && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
     {
@@ -212,7 +211,7 @@ void ShapeController::HandleKeyPress(const sf::Event::KeyEvent& key)
             }
         }
         m_handler->SetShapes(newShapes);
-        m_history->UpdateHistory(std::make_shared<ShapeMemento>(shapes));
+        SaveChanges();
     }
     else if (key.code == sf::Keyboard::Z && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
     {
@@ -293,4 +292,16 @@ void ShapeController::PrintShapesInfo(const std::string& fileName)
     }
 
     output.close();
+}
+
+void ShapeController::SaveChanges()
+{
+    std::vector<IShapePtr> clonedShapes;
+    for (const auto& shape : m_handler->GetShapes())
+    {
+        //auto movableShape = std::dynamic_pointer_cast<ShapeMovableDecorator>(shape);
+        
+        clonedShapes.push_back(shape->Clone());
+    }
+    m_history->UpdateHistory(std::make_shared<ShapeMemento>(clonedShapes));
 }
