@@ -15,10 +15,10 @@ public:
 	std::vector<IShapePtr> GetShapes() const;
 	void SetShapes(std::vector<IShapePtr> shapes);
 
-	void SetFillColor(const sf::Color& color);
-	void SetOutlineColor(const sf::Color& color);
-	void AddOutlineThickness();
-	void ReduceOutlineThickness();
+	void SetFillColorForSelectedShapes(const sf::Color& color);
+	void SetOutlineColorForSelectedShapes(const sf::Color& color);
+	void AddOutlineThicknessForSelectedShapes();
+	void ReduceOutlineThicknessForSelectedShapes();
 
 private:
 	void AddShape(IShapePtr& shape);

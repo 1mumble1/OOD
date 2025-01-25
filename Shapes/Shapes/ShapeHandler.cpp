@@ -37,7 +37,7 @@ void ShapeHandler::SetShapes(std::vector<IShapePtr> shapes)
 	m_shapes = shapes;
 }
 
-void ShapeHandler::SetFillColor(const sf::Color& color)
+void ShapeHandler::SetFillColorForSelectedShapes(const sf::Color& color)
 {
 	for (const auto& shape : m_shapes)
 	{
@@ -49,7 +49,7 @@ void ShapeHandler::SetFillColor(const sf::Color& color)
 	}
 }
 
-void ShapeHandler::SetOutlineColor(const sf::Color& color)
+void ShapeHandler::SetOutlineColorForSelectedShapes(const sf::Color& color)
 {
 	for (const auto& shape : m_shapes)
 	{
@@ -61,7 +61,7 @@ void ShapeHandler::SetOutlineColor(const sf::Color& color)
 	}
 }
 
-void ShapeHandler::AddOutlineThickness()
+void ShapeHandler::AddOutlineThicknessForSelectedShapes()
 {
 	for (const auto& shape : m_shapes)
 	{
@@ -73,7 +73,7 @@ void ShapeHandler::AddOutlineThickness()
 	}
 }
 
-void ShapeHandler::ReduceOutlineThickness()
+void ShapeHandler::ReduceOutlineThicknessForSelectedShapes()
 {
 	for (const auto& shape : m_shapes)
 	{

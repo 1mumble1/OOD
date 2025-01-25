@@ -60,12 +60,12 @@ void Toolbar::FillOutline()
 
 void Toolbar::AddOutlineThickness()
 {
-	m_handler->AddOutlineThickness();
+	m_handler->AddOutlineThicknessForSelectedShapes();
 }
 
 void Toolbar::ReduceOutlineThickness()
 {
-	m_handler->ReduceOutlineThickness();
+	m_handler->ReduceOutlineThicknessForSelectedShapes();
 }
 
 void Toolbar::SetColor(const sf::Color& newColor)
@@ -73,11 +73,11 @@ void Toolbar::SetColor(const sf::Color& newColor)
 	m_color = newColor;
 	if (typeid(*m_state) == typeid(FillShapeState))
 	{
-		m_handler->SetFillColor(m_color);
+		m_handler->SetFillColorForSelectedShapes(m_color);
 	}
 	else if (typeid(*m_state) == typeid(FillOutlineState))
 	{
-		m_handler->SetOutlineColor(m_color);
+		m_handler->SetOutlineColorForSelectedShapes(m_color);
 	}
 }
 
