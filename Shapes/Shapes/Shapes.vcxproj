@@ -154,6 +154,7 @@
     <ClCompile Include="FillOutlineState.cpp" />
     <ClCompile Include="FillShapeCommand.cpp" />
     <ClCompile Include="FillShapeState.cpp" />
+    <ClCompile Include="History.cpp" />
     <ClCompile Include="ReduceOutlineThicknessCommand.cpp" />
     <ClCompile Include="SetBlueColorCommand.cpp" />
     <ClCompile Include="SetGreenColorCommand.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="ShapeHandler.cpp" />
     <ClCompile Include="ShapeMathDecorator.cpp" />
+    <ClCompile Include="ShapeMemento.cpp" />
     <ClCompile Include="ShapeMovableDecorator.cpp" />
     <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="SimpleShapeMovableDecorator.cpp" />
@@ -189,6 +191,7 @@
     <ClInclude Include="FillOutlineState.h" />
     <ClInclude Include="FillShapeCommand.h" />
     <ClInclude Include="FillShapeState.h" />
+    <ClInclude Include="History.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="IState.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="ShapeCreator.h" />
     <ClInclude Include="ShapeHandler.h" />
     <ClInclude Include="ShapeMathDecorator.h" />
+    <ClInclude Include="ShapeMemento.h" />
     <ClInclude Include="ShapeMovableDecorator.h" />
     <ClInclude Include="SimpleShapeMovableDecorator.h" />
     <ClInclude Include="stdafx.h" />

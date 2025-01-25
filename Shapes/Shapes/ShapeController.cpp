@@ -43,6 +43,7 @@ void ShapeController::ReadShapes(const std::string& fileName)
     }
 
     m_handler->SetShapes(shapes);
+    m_history->UpdateHistory(std::make_shared<ShapeMemento>(shapes));
 }
 
 IShapePtr ShapeController::ConstructShape(const std::string& line)
@@ -96,6 +97,8 @@ void ShapeController::HandleMousePress(const sf::Event::MouseButtonEvent& mouse)
     {
         m_toolBar->SetCursorPosition(mousePos);
         m_toolBar->PressToolButton();
+        auto currentMemento = std::make_shared<ShapeMemento>(m_handler->GetShapes());
+        m_history->UpdateHistory(currentMemento);
 
         if (typeid(*m_toolBar->GetState()) == typeid(DragAndDropState))
         {
@@ -186,6 +189,7 @@ void ShapeController::HandleKeyPress(const sf::Event::KeyEvent& key)
         }
         shapes.push_back(std::make_shared<CompositeShapeMovableDecorator>(std::make_shared<CompositeShape>(compositeShape)));
         m_handler->SetShapes(shapes);
+        m_history->UpdateHistory(std::make_shared<ShapeMemento>(shapes));
     }
     else if (key.code == sf::Keyboard::U && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
     {
@@ -208,6 +212,15 @@ void ShapeController::HandleKeyPress(const sf::Event::KeyEvent& key)
             }
         }
         m_handler->SetShapes(newShapes);
+        m_history->UpdateHistory(std::make_shared<ShapeMemento>(shapes));
+    }
+    else if (key.code == sf::Keyboard::Z && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+    {
+        auto previousState = m_history->Undo();
+        if (previousState != nullptr)
+        {
+            m_handler->SetShapes(previousState->GetState());
+        }
     }
 }
 
@@ -266,7 +279,7 @@ void ShapeController::PrintShapesInfo(const std::string& fileName)
         else if (currentShape->ToString() == CRectangleShape::NAME)
         {
             auto mathShape = std::make_shared<CRectangleMathDecorator>(std::move(currentShape));
-            output << mathShape->ToString() << std::endl;
+            
         }
         else if (currentShape->ToString() == CCircleShape::NAME)
         {
