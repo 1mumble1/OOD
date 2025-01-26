@@ -1,11 +1,10 @@
 #include "stdafx.h"
-#include "ShapeController.h"
+#include "Application.h"
 
 int main()
 {
-    ShapeController sController;
-    sController.ReadShapes("input.txt");
-    sController.PrintShapesInfo("output.txt");
-    sController.DrawShapes();
+    Application& app = Application::GetInstance();
+    app.ReadShapes(INPUT_FILE_NAME);
+    app.DrawShapes();
     return 0;
 }

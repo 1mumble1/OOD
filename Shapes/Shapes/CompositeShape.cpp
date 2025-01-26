@@ -95,4 +95,54 @@ sf::Vector2f CompositeShape::GetSize() const
     return sf::Vector2f();
 }
 
+void CompositeShape::AddOutlineThickness()
+{
+    for (auto& shape : m_shapes)
+    {
+        shape->AddOutlineThickness();
+    }
+}
+
+void CompositeShape::ReduceOutlineThickness()
+{
+    for (auto& shape : m_shapes)
+    {
+        shape->ReduceOutlineThickness();
+    }
+}
+
+void CompositeShape::SetFillColor(sf::Color color)
+{
+    for (auto& shape : m_shapes)
+    {
+        shape->SetFillColor(color);
+    }
+}
+
+void CompositeShape::SetOutlineColor(sf::Color color)
+{
+    for (auto& shape : m_shapes)
+    {
+        shape->SetOutlineColor(color);
+    }
+}
+
+sf::Color CompositeShape::GetFillColor() const
+{
+    if (m_shapes.empty())
+    {
+        return sf::Color::White;
+    }
+    return m_shapes[0]->GetFillColor();
+}
+
+sf::Color CompositeShape::GetOutlineColor() const
+{
+    if (m_shapes.empty())
+    {
+        return sf::Color::White;
+    }
+    return m_shapes[0]->GetOutlineColor();
+}
+
 

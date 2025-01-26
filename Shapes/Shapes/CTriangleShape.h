@@ -32,6 +32,13 @@ public:
 	sf::Vector2f GetSecondVertex() const;
 	sf::Vector2f GetThirdVertex() const;
 
+	void AddOutlineThickness() override;
+	void ReduceOutlineThickness() override;
+	void SetFillColor(sf::Color color) override;
+	void SetOutlineColor(sf::Color color) override;
+	sf::Color GetFillColor() const override;
+	sf::Color GetOutlineColor() const override;
+
 private:
 	sf::ConvexShape m_triangle;
 };

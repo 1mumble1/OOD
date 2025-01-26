@@ -20,6 +20,13 @@ public:
     virtual sf::Vector2f GetPosition() const override = 0;
     virtual sf::Vector2f GetSize() const override = 0;
 
+    void AddOutlineThickness() override;
+    void ReduceOutlineThickness() override;
+    void SetFillColor(sf::Color color) override;
+    void SetOutlineColor(sf::Color color) override;
+    sf::Color GetFillColor() const override;
+    sf::Color GetOutlineColor() const override;
+
 protected:
     IShapePtr m_shape;
 };

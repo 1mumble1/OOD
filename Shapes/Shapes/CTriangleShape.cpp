@@ -46,3 +46,47 @@ sf::Vector2f CTriangleShape::GetThirdVertex() const
 {
 	return m_triangle.getPoint(2);
 }
+
+void CTriangleShape::AddOutlineThickness()
+{
+	float thickness = m_triangle.getOutlineThickness();
+	if (thickness >= 5)
+	{
+		return;
+	}
+
+	thickness++;
+	m_triangle.setOutlineThickness(thickness);
+}
+
+void CTriangleShape::ReduceOutlineThickness()
+{
+	float thickness = m_triangle.getOutlineThickness();
+	if (thickness <= 1)
+	{
+		return;
+	}
+
+	thickness--;
+	m_triangle.setOutlineThickness(thickness);
+}
+
+void CTriangleShape::SetFillColor(sf::Color color)
+{
+	m_triangle.setFillColor(color);
+}
+
+void CTriangleShape::SetOutlineColor(sf::Color color)
+{
+	m_triangle.setOutlineColor(color);
+}
+
+sf::Color CTriangleShape::GetFillColor() const
+{
+	return m_triangle.getFillColor();
+}
+
+sf::Color CTriangleShape::GetOutlineColor() const
+{
+	return m_triangle.getOutlineColor();
+}

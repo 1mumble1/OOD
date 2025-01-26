@@ -24,7 +24,7 @@ bool CCircleShape::Contains(const sf::Vector2f& point) const
 
 sf::Vector2f CCircleShape::GetPosition() const
 {
-	return m_circle.getPosition();
+	return m_circle.getGlobalBounds().getPosition();
 }
 
 sf::Vector2f CCircleShape::GetSize() const
@@ -41,3 +41,49 @@ sf::Vector2f CCircleShape::GetCenter() const
 {
 	return m_circle.getPosition();
 }
+
+void CCircleShape::AddOutlineThickness()
+{
+	float thickness = m_circle.getOutlineThickness();
+	if (thickness >= 5)
+	{
+		return;
+	}
+
+	thickness++;
+	m_circle.setOutlineThickness(thickness);
+}
+
+void CCircleShape::ReduceOutlineThickness()
+{
+	float thickness = m_circle.getOutlineThickness();
+	if (thickness <= 1)
+	{
+		return;
+	}
+
+	thickness--;
+	m_circle.setOutlineThickness(thickness);
+}
+
+void CCircleShape::SetFillColor(sf::Color color)
+{
+	m_circle.setFillColor(color);
+}
+
+void CCircleShape::SetOutlineColor(sf::Color color)
+{
+	m_circle.setOutlineColor(color);
+}
+
+sf::Color CCircleShape::GetFillColor() const
+{
+	return m_circle.getFillColor();
+}
+
+sf::Color CCircleShape::GetOutlineColor() const
+{
+	return m_circle.getOutlineColor();
+}
+
+

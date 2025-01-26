@@ -9,7 +9,7 @@ void SimpleShapeMovableDecorator::Draw(sf::RenderWindow& window) const
         auto size = m_shape->GetSize();
         rect.setPosition(pos);
         rect.setSize(size);
-        rect.setOutlineColor(sf::Color::Blue);
+        rect.setOutlineColor(sf::Color::Black);
         rect.setOutlineThickness(2);
         rect.setFillColor(sf::Color::Transparent);
         window.draw(rect);

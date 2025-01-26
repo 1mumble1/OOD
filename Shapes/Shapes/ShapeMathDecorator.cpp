@@ -42,6 +42,36 @@ sf::Vector2f ShapeMathDecorator::GetSize() const
     return m_shape->GetSize();
 }
 
+void ShapeMathDecorator::AddOutlineThickness()
+{
+    m_shape->AddOutlineThickness();
+}
+
+void ShapeMathDecorator::ReduceOutlineThickness()
+{
+    m_shape->ReduceOutlineThickness();
+}
+
+void ShapeMathDecorator::SetFillColor(sf::Color color)
+{
+    m_shape->SetFillColor(color);
+}
+
+void ShapeMathDecorator::SetOutlineColor(sf::Color color)
+{
+    m_shape->SetOutlineColor(color);
+}
+
+sf::Color ShapeMathDecorator::GetFillColor() const
+{
+    return m_shape->GetFillColor();
+}
+
+sf::Color ShapeMathDecorator::GetOutlineColor() const
+{
+    return m_shape->GetOutlineColor();
+}
+
 void ShapeMathDecorator::SetPerimeter()
 {
     m_perimeter = CalculatePerimeter();

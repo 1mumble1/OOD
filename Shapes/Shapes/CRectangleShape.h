@@ -27,6 +27,13 @@ public:
     float GetWidth() const;
     float GetHeight() const;
 
+    void AddOutlineThickness() override;
+    void ReduceOutlineThickness() override;
+    void SetFillColor(sf::Color color) override;
+    void SetOutlineColor(sf::Color color) override;
+    sf::Color GetFillColor() const override;
+    sf::Color GetOutlineColor() const override;
+
 private:
 	sf::RectangleShape m_rectangle;
 };

@@ -21,6 +21,13 @@ public:
     sf::Vector2f GetPosition() const override;
     sf::Vector2f GetSize() const override;
 
+    void AddOutlineThickness() override;
+    void ReduceOutlineThickness() override;
+    void SetFillColor(sf::Color color) override;
+    void SetOutlineColor(sf::Color color) override;
+    sf::Color GetFillColor() const override;
+    sf::Color GetOutlineColor() const override;
+
 protected:
     virtual float CalculatePerimeter() const = 0;
     virtual float CalculateArea() const = 0;

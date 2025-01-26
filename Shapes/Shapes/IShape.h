@@ -12,6 +12,13 @@ public:
     virtual bool Contains(const sf::Vector2f& point) const = 0;
     virtual sf::Vector2f GetPosition() const = 0;
     virtual sf::Vector2f GetSize() const = 0;
+
+    virtual void AddOutlineThickness() = 0;
+    virtual void ReduceOutlineThickness() = 0;
+    virtual void SetFillColor(sf::Color color) = 0;
+    virtual void SetOutlineColor(sf::Color color) = 0;
+    virtual sf::Color GetFillColor() const = 0;
+    virtual sf::Color GetOutlineColor() const = 0;
 };
 
 typedef std::shared_ptr<IShape> IShapePtr;
